@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Heading } from "./Heading";
-import { UserList } from "./UserList";
+import { PrintersList } from "./PrintersList";
 
 export const Home = () => {
   return (
     <>
       <Heading />
-      <UserList />
+      <PrintersList />
     </>
-  )
-}
+  );
+};
