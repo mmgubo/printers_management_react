@@ -6,7 +6,7 @@ export const Heading = () => {
   return (
     <Navbar color="dark" dark>
       <Container>
-        <NavbarBrand href="/">Printers</NavbarBrand>
+        <NavbarBrand>Printers</NavbarBrand>
         <Nav>
           <NavItem>
             <Link className="btn btn-primary" to="/add">

@@ -6,7 +6,9 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 export const AddPrinter = () => {
   const [name, setName] = useState("");
-  const { addUser } = useContext(GlobalContext);
+  const [ip, setIP] = useState("");
+
+  const { addPrinter } = useContext(GlobalContext);
   const history = useHistory();
 
   const onSubmit = (e) => {
@@ -14,13 +16,15 @@ export const AddPrinter = () => {
     const newPrinter = {
       id: uuid(),
       name,
+      ip,
     };
-    addUser(newPrinter);
+    addPrinter(newPrinter);
     history.push("/");
   };
 
   const onChange = (e) => {
     setName(e.target.value);
+    setIP(e.target.value);
   };
 
   return (
@@ -33,6 +37,17 @@ export const AddPrinter = () => {
           onChange={onChange}
           name="name"
           placeholder="Enter printer name"
+          required
+        ></Input>
+      </FormGroup>
+      <FormGroup>
+        <Label>Printer IP</Label>
+        <Input
+          type="text"
+          value={ip}
+          onChange={onChange}
+          name="ip"
+          placeholder="Enter printer IP"
           required
         ></Input>
       </FormGroup>

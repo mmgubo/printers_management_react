@@ -4,8 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 export const EditPrinter = (props) => {
-  const { editUser, users } = useContext(GlobalContext);
-  const [selectedUser, setSelectedUser] = useState({
+  const { editPrinter, printers } = useContext(GlobalContext);
+  const [selectedPrinter, setSelectedPrinter] = useState({
     id: "",
     name: "",
   });
@@ -14,17 +14,17 @@ export const EditPrinter = (props) => {
 
   useEffect(() => {
     const userId = currentUserId;
-    const selectedUser = users.find((user) => user.id === userId);
-    setSelectedUser(selectedUser);
-  }, [currentUserId, users]);
+    const selectedPrinter = printers.find((user) => user.id === userId);
+    setSelectedPrinter(selectedPrinter);
+  }, [currentUserId, printers]);
 
   const onChange = (e) => {
-    setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value });
+    setSelectedPrinter({ ...selectedPrinter, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    editUser(selectedUser);
+    editPrinter(selectedPrinter);
     history.push("/");
   };
 
@@ -34,7 +34,7 @@ export const EditPrinter = (props) => {
         <Label>Printer Name</Label>
         <Input
           type="text"
-          value={selectedUser.name}
+          value={selectedPrinter.name}
           onChange={onChange}
           name="name"
           placeholder="Enter Printer"

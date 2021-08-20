@@ -1,10 +1,10 @@
-import React, { createContext, useReducer } from 'react';
-import AppReducer from './AppReducer';
+import React, { createContext, useReducer } from "react";
+import AppReducer from "./AppReducer";
 
 // Initial State
 const initialState = {
-  users: []
-}
+  printers: [],
+};
 
 // Create Context
 export const GlobalContext = createContext(initialState);
@@ -14,35 +14,37 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Actions
-  const removeUser = (id) => {
+  const removePrinter = (id) => {
     dispatch({
-      type: 'REMOVE_USER',
-      payload: id
-    })
-  }
+      type: "REMOVE_PRINTER",
+      payload: id,
+    });
+  };
 
-  const addUser = (user) => {
+  const addPrinter = (printer) => {
     dispatch({
-      type: 'ADD_USER',
-      payload: user
-    })
-  }
+      type: "ADD_PRINTER",
+      payload: printer,
+    });
+  };
 
-  const editUser = (user) => {
+  const editPrinter = (printer) => {
     dispatch({
-      type: 'EDIT_USER',
-      payload: user
-    })
-  }
+      type: "EDIT_PRINTER",
+      payload: printer,
+    });
+  };
 
   return (
-    <GlobalContext.Provider value={{
-      users: state.users,
-      removeUser,
-      addUser,
-      editUser
-    }}>
+    <GlobalContext.Provider
+      value={{
+        printers: state.printers,
+        removePrinter,
+        addPrinter,
+        editPrinter,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
-  )
-}
+  );
+};

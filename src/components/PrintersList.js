@@ -4,24 +4,27 @@ import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 
 export const PrintersList = () => {
-  const { users, removeUser } = useContext(GlobalContext);
+  const { printers, removePrinter } = useContext(GlobalContext);
 
   return (
     <ListGroup className="mt-4">
-      {users.length > 0 ? (
+      {printers.length > 0 ? (
         <>
-          {users.map((user) => (
-            <ListGroupItem className="d-flex" key={user.id}>
-              <strong>{user.name}</strong>
+          {printers.map((printer) => (
+            <ListGroupItem className="d-flex" key={printer.id}>
+              <strong>{printer.name}</strong>
               <div className="ml-auto">
                 <Link
-                  to={`/edit/${user.id}`}
+                  to={`/edit/${printer.id}`}
                   color="warning"
                   className="btn btn-warning mr-1"
                 >
                   Edit
                 </Link>
-                <Button onClick={() => removeUser(user.id)} color="danger">
+                <Button
+                  onClick={() => removePrinter(printer.id)}
+                  color="danger"
+                >
                   Delete
                 </Button>
               </div>
